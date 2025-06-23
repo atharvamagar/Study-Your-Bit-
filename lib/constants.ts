@@ -23,7 +23,7 @@ export const COLORS = {
 
 // Navigation data
 export const NAVIGATION = {
-  subjects: ["Political Science", "History", "Psychology", "Sociology", "English"],
+  subjects: ["Economics", "Political Science", "History", "Psychology", "Sociology", "English"],
   years: ["FY", "SY", "TY"],
   semesters: ["Sem 1", "Sem 2"],
   chapters: ["Chapter 1", "Chapter 2"],

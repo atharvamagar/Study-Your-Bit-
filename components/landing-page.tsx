@@ -10,6 +10,7 @@ import { FeaturesSection } from "./sections/features-section"
 import { CommunitySection } from "./sections/community-section"
 import { Footer } from "./footer"
 import { ChatBot } from "./chatbot"
+import TestimonialSlider from "@/components/ui/testimonial-slider"
 
 export function LandingPage() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -35,11 +36,15 @@ export function LandingPage() {
               {/* Hero Section */}
               <HeroSection />
 
+              {/* Testimonials Section */}
+              <TestimonialSlider />
+
               {/* Features Section */}
               <FeaturesSection />
 
               {/* Community Section */}
               <CommunitySection />
+
             </main>
 
             {/* Footer */}
