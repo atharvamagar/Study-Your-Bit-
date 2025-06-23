@@ -42,7 +42,7 @@ export function Header({ isLoggedIn, onLoginToggle }: HeaderProps) {
             
             <DropdownMenu>
               <DropdownMenuTrigger className="flex items-center space-x-1 hover:text-white text-sm text-center py-2 text-white transition-colors">
-                <span>Courses & Subjects</span>
+                <span>Courses</span>
                 <ChevronDown className="w-3 h-3" />
               </DropdownMenuTrigger>
               <DropdownMenuContent className="w-56">
@@ -104,13 +104,10 @@ export function Header({ isLoggedIn, onLoginToggle }: HeaderProps) {
             <a href="#program" className="hover:text-white text-sm text-center py-2 text-white transition-colors">
               Program
             </a>
-            <a href="#syb-bot" className="hover:text-white text-sm text-center py-2 text-white transition-colors">
-              SYB Bot
-            </a>
 
             <DropdownMenu>
               <DropdownMenuTrigger className="flex items-center space-x-1 hover:text-white text-sm text-center py-2 text-white transition-colors">
-                <span>Blogs & Resources</span>
+                <span>Resources</span>
                 <ChevronDown className="w-3 h-3" />
               </DropdownMenuTrigger>
               <DropdownMenuContent>
@@ -126,10 +123,6 @@ export function Header({ isLoggedIn, onLoginToggle }: HeaderProps) {
             <a href="#contact" className="hover:text-white text-sm text-center py-2 text-white transition-colors">
               Contact Us
             </a>
-            <a href="#feedback" className="hover:text-white text-sm text-center py-2 text-white transition-colors">
-              Feedback
-            </a>
-
             <DropdownMenu>
               <DropdownMenuTrigger className="flex items-center space-x-1 hover:text-white text-sm text-center py-2 text-white transition-colors">
                 <span>Grievances</span>
@@ -166,6 +159,7 @@ export function Header({ isLoggedIn, onLoginToggle }: HeaderProps) {
                     <DropdownMenuItem key={option} className="text-center">{option}</DropdownMenuItem>
                   ))}
                   <DropdownMenuItem className="text-center">QnA Forum</DropdownMenuItem>
+                  <DropdownMenuItem className="text-center">Feedback</DropdownMenuItem>
                   <DropdownMenuItem onClick={onLoginToggle} className="text-center">Logout</DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
@@ -207,7 +201,7 @@ export function Header({ isLoggedIn, onLoginToggle }: HeaderProps) {
               {/* Mobile navigation items */}
               <div className="space-y-4">
                 <div>
-                  <h3 className="font-semibold mb-2 text-white">Courses & Subjects</h3>
+                  <h3 className="font-semibold mb-2 text-white">Courses</h3>
                   <div className="pl-4 space-y-2">
                     {NAVIGATION.subjects.map((subject) => (
                       <div key={subject} className="space-y-1">
@@ -248,12 +242,9 @@ export function Header({ isLoggedIn, onLoginToggle }: HeaderProps) {
                 <a href="#program" className="block text-white/90 hover:text-white transition-colors">
                   Program
                 </a>
-                <a href="#syb-bot" className="block text-white/90 hover:text-white transition-colors">
-                  SYB Bot
-                </a>
                 
                 <div>
-                  <h3 className="font-semibold mb-2 text-white">Blogs & Resources</h3>
+                  <h3 className="font-semibold mb-2 text-white">Resources</h3>
                   <div className="pl-4 space-y-2">
                     {NAVIGATION.blogCategories.map((category) => (
                       <a
@@ -273,9 +264,6 @@ export function Header({ isLoggedIn, onLoginToggle }: HeaderProps) {
                 <a href="#contact" className="block text-white/90 hover:text-white transition-colors">
                   Contact Us
                 </a>
-                <a href="#feedback" className="block text-white/90 hover:text-white transition-colors">
-                  Feedback
-                </a>
                 <a href="#grievances" className="block text-white/90 hover:text-white transition-colors">
                   Grievances
                 </a>
@@ -288,6 +276,8 @@ export function Header({ isLoggedIn, onLoginToggle }: HeaderProps) {
                           {option}
                         </a>
                       ))}
+                      <a href="#" className="block text-white/90 hover:text-white transition-colors">QnA Forum</a>
+                      <a href="#" className="block text-white/90 hover:text-white transition-colors">Feedback</a>
                       <Button
                         variant="ghost"
                         size="sm"
