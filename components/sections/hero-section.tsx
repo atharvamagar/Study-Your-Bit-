@@ -4,8 +4,8 @@ import { COLORS } from "@/lib/constants"
 
 export function HeroSection() {
   return (
-    <section className="w-full flex flex-col items-center justify-center py-16 lg:py-24">
-      <div className="w-full max-w-4xl flex flex-col lg:flex-row gap-12 items-center justify-between">
+    <section className="w-full flex flex-col items-center justify-center py-6 lg:py-10">
+      <div className="w-full max-w-4xl flex flex-col lg:flex-row gap-16 items-center justify-between">
         <div className="flex-1 flex flex-col items-start justify-center text-left space-y-6">
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight mb-2" style={{ color: COLORS.primary.blue }}>
             Master Your Studies with <span className="text-orange-500">AI-Powered</span> Learning
