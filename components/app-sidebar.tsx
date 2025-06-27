@@ -91,10 +91,9 @@ export function AppSidebar() {
   return (
     <Sidebar
       collapsible="none"
-      className="border-r transition-all duration-300 ease-in-out"
-      style={{ backgroundColor: COLORS.primary.header }}
+      className="border-r transition-all duration-300 ease-in-out bg-orange-500"
     >
-      <SidebarHeader className="p-6 transition-all duration-300 ease-in-out flex items-start justify-start" style={{ backgroundColor: COLORS.primary.header }}>
+      <SidebarHeader className="p-6 transition-all duration-300 ease-in-out flex items-start justify-start bg-orange-500">
         <div className="flex items-start justify-start space-x-3">
           <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
             <WebsiteIcon className="w-8 h-8" style={{ color: COLORS.primary.orange }} />
@@ -106,7 +105,7 @@ export function AppSidebar() {
         </div>
       </SidebarHeader>
 
-      <SidebarContent style={{ backgroundColor: COLORS.primary.header }} className="transition-all duration-300 ease-in-out">
+      <SidebarContent className="transition-all duration-300 ease-in-out bg-orange-500">
         {/* Student Corner */}
         <SidebarGroup className="animate-slide-in-left" style={{ animationDelay: "0.1s" }}>
           <SidebarGroupLabel
@@ -169,8 +168,7 @@ export function AppSidebar() {
       </SidebarContent>
 
       <SidebarFooter
-        className="p-6 animate-slide-in-left"
-        style={{ backgroundColor: COLORS.primary.header, animationDelay: "1.3s" }}
+        className="p-6 animate-slide-in-left bg-orange-500"
       >
         <SidebarMenu>
           <SidebarMenuItem>

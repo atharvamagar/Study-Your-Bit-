@@ -74,7 +74,7 @@ export function Footer() {
   ]
 
   return (
-    <footer style={{ backgroundColor: COLORS.primary.blue }} className="text-white py-12">
+    <footer className="text-white py-12 bg-orange-500">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand Section */}
