@@ -137,11 +137,9 @@ const TestimonialSlider: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-8 sm:mb-12 md:mb-16"
         >
-          <span className="inline-block py-1 px-3 rounded-full" style={{ backgroundColor: COLORS.primary.blue + '1A', color: COLORS.primary.blue }}>
-            Real Learner’s Impact
-          </span>
+        
           <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mt-3 sm:mt-4 px-4 text-blue-900">
-            Transformative Student Experiences
+          Real Learner’s Impact
           </h3>
           <div className="w-16 sm:w-24 h-1 rounded bg-gradient-to-r from-blue-500 to-orange-400 mx-auto mt-4 sm:mt-6"></div>
         </motion.div>
