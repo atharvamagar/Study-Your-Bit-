@@ -165,7 +165,13 @@ export function Header({ isLoggedIn, onLoginToggle }: HeaderProps) {
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>
                   {NAVIGATION.profileOptions.map((option) => (
-                    <DropdownMenuItem key={option} className="text-center">{option}</DropdownMenuItem>
+                    <DropdownMenuItem key={option} className="text-center">
+                      {option === "My progress" ? (
+                        <a href="/analytics" className="w-full text-center">{option}</a>
+                      ) : (
+                        option
+                      )}
+                    </DropdownMenuItem>
                   ))}
                   <DropdownMenuItem className="text-center">QnA Forum</DropdownMenuItem>
                   <DropdownMenuItem className="text-center">Feedback</DropdownMenuItem>
@@ -257,7 +263,7 @@ export function Header({ isLoggedIn, onLoginToggle }: HeaderProps) {
                       className="block text-white/70 hover:text-white transition-colors"
                     >
                       Pricing Plans
-                    </a>
+                </a>
                   </div>
                 </div>
                 
@@ -290,7 +296,11 @@ export function Header({ isLoggedIn, onLoginToggle }: HeaderProps) {
                   {isLoggedIn ? (
                     <div className="space-y-2">
                       {NAVIGATION.profileOptions.map((option) => (
-                        <a key={option} href="#" className="block text-white/90 hover:text-white transition-colors">
+                        <a 
+                          key={option} 
+                          href={option === "My progress" ? "/analytics" : "#"} 
+                          className="block text-white/90 hover:text-white transition-colors"
+                        >
                           {option}
                         </a>
                       ))}

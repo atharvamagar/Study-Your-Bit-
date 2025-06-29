@@ -1,6 +1,12 @@
 "use client"
 
 import { useState } from "react"
+import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar"
+import { AppSidebar } from "@/components/app-sidebar"
+import { Header } from "@/components/header"
+import { Marquee } from "@/components/marquee"
+import { Footer } from "@/components/footer"
+import { ChatBot } from "@/components/chatbot"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -108,8 +114,13 @@ const templates = [
 ]
 
 export default function PricingPage() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [selectedPlan, setSelectedPlan] = useState<string | null>(null)
   const [selectedTemplate, setSelectedTemplate] = useState<string | null>(null)
+
+  const handleLoginToggle = () => {
+    setIsLoggedIn(!isLoggedIn)
+  }
 
   const handleBuyNow = (planId: string, planName: string) => {
     setSelectedPlan(planId)
@@ -126,174 +137,188 @@ export default function PricingPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-blue-50">
-      {/* Hero Section */}
-      <div className="bg-orange-500 text-white py-16">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl font-bold mb-4">Choose Your Learning Path</h1>
-          <p className="text-xl text-orange-100 max-w-2xl mx-auto">
-            Flexible pricing plans designed to fit every student's needs and budget
-          </p>
-        </div>
+    <SidebarProvider defaultOpen={true}>
+      <div className="flex min-h-screen bg-white">
+        <AppSidebar />
+        <SidebarInset className="flex-1">
+          <div className="min-h-screen bg-white flex flex-col">
+            {/* Header */}
+            <Header isLoggedIn={isLoggedIn} onLoginToggle={handleLoginToggle} />
+
+            {/* Marquee */}
+            <Marquee text="💰 Choose your perfect learning plan and start your educational journey today! 🎓" />
+
+            {/* Main Content Container */}
+            <main className="flex-1 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+              {/* Page Header */}
+              <div className="mb-8">
+                <h1 className="text-3xl sm:text-4xl font-bold text-blue-900 mb-4">Choose Your Learning Path</h1>
+                <p className="text-lg text-gray-600">Flexible pricing plans designed to fit every student's needs and budget</p>
+              </div>
+
+              {/* Pricing Plans Section */}
+              <div className="mb-16">
+                <div className="text-center mb-12">
+                  <h2 className="text-3xl font-bold mb-4">Pricing Plans</h2>
+                  <p className="text-gray-600 max-w-2xl mx-auto">
+                    Choose the perfect plan that matches your learning goals and timeline
+                  </p>
+                </div>
+
+                <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                  {pricingPlans.map((plan) => {
+                    const IconComponent = plan.icon
+                    return (
+                      <Card 
+                        key={plan.id} 
+                        className={`relative ${plan.popular ? 'ring-2 ring-orange-500 scale-105' : ''}`}
+                      >
+                        {plan.popular && (
+                          <Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-orange-500 text-white">
+                            Most Popular
+                          </Badge>
+                        )}
+                        <CardHeader className="text-center">
+                          <div className="flex justify-center mb-4">
+                            <div className={`p-3 rounded-full ${plan.color} text-white`}>
+                              <IconComponent className="w-6 h-6" />
+                            </div>
+                          </div>
+                          <CardTitle className="text-2xl">{plan.name}</CardTitle>
+                          <CardDescription className="text-base">{plan.description}</CardDescription>
+                          <div className="mt-4">
+                            <div className="flex items-center justify-center gap-2">
+                              <span className="text-3xl font-bold text-gray-900">{plan.price}</span>
+                              <span className="text-lg text-gray-500 line-through">{plan.originalPrice}</span>
+                            </div>
+                            <p className="text-sm text-gray-600 mt-1">for {plan.duration}</p>
+                          </div>
+                        </CardHeader>
+                        <CardContent>
+                          <ul className="space-y-3 mb-6">
+                            {plan.features.map((feature, index) => (
+                              <li key={index} className="flex items-center gap-3">
+                                <Check className="w-5 h-5 text-green-500 flex-shrink-0" />
+                                <span className="text-sm">{feature}</span>
+                              </li>
+                            ))}
+                          </ul>
+                          <Button 
+                            className={`w-full ${plan.popular ? 'bg-orange-500 hover:bg-orange-600' : 'bg-blue-500 hover:bg-blue-600'}`}
+                            onClick={() => handleBuyNow(plan.id, plan.name)}
+                          >
+                            Buy Now
+                          </Button>
+                        </CardContent>
+                      </Card>
+                    )
+                  })}
+                </div>
+              </div>
+
+              {/* Templates Section */}
+              <div className="mb-16">
+                <div className="text-center mb-12">
+                  <h2 className="text-3xl font-bold mb-4">Study Templates</h2>
+                  <p className="text-gray-600 max-w-2xl mx-auto">
+                    Pre-designed learning paths for specific academic streams
+                  </p>
+                </div>
+
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+                  {templates.map((template, index) => (
+                    <Card key={index} className="hover:shadow-lg transition-shadow">
+                      <CardHeader>
+                        <CardTitle className="text-lg">{template.name}</CardTitle>
+                        <CardDescription>{template.duration} program</CardDescription>
+                      </CardHeader>
+                      <CardContent>
+                        <div className="mb-4">
+                          <h4 className="font-semibold text-sm mb-2">Subjects:</h4>
+                          <div className="flex flex-wrap gap-1">
+                            {template.subjects.map((subject, idx) => (
+                              <Badge key={idx} variant="secondary" className="text-xs">
+                                {subject}
+                              </Badge>
+                            ))}
+                          </div>
+                        </div>
+                        <div className="mb-4">
+                          <h4 className="font-semibold text-sm mb-2">Features:</h4>
+                          <ul className="text-xs text-gray-600 space-y-1">
+                            {template.features.map((feature, idx) => (
+                              <li key={idx} className="flex items-center gap-1">
+                                <Target className="w-3 h-3 text-orange-500" />
+                                {feature}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                        <div className="flex items-center justify-between mb-4">
+                          <span className="text-2xl font-bold text-orange-500">{template.price}</span>
+                          <Badge variant="outline" className="text-xs">
+                            <Clock className="w-3 h-3 mr-1" />
+                            {template.duration}
+                          </Badge>
+                        </div>
+                        <Button 
+                          className="w-full bg-orange-500 hover:bg-orange-600"
+                          onClick={() => handleTemplateBuy(template.name, template.price)}
+                        >
+                          Buy Now
+                        </Button>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </div>
+
+              {/* FAQ Section */}
+              <div className="max-w-4xl mx-auto">
+                <div className="text-center mb-12">
+                  <h2 className="text-3xl font-bold mb-4">Frequently Asked Questions</h2>
+                </div>
+                
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div className="space-y-6">
+                    <div>
+                      <h3 className="font-semibold mb-2">Can I upgrade my plan later?</h3>
+                      <p className="text-gray-600 text-sm">Yes, you can upgrade your plan at any time. The remaining balance will be adjusted accordingly.</p>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold mb-2">What payment methods do you accept?</h3>
+                      <p className="text-gray-600 text-sm">We accept all major credit cards, debit cards, UPI, and net banking.</p>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold mb-2">Is there a money-back guarantee?</h3>
+                      <p className="text-gray-600 text-sm">Yes, we offer a 30-day money-back guarantee if you're not satisfied with our service.</p>
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-6">
+                    <div>
+                      <h3 className="font-semibold mb-2">Can I access content offline?</h3>
+                      <p className="text-gray-600 text-sm">Yes, you can download study materials for offline access through our mobile app.</p>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold mb-2">Do you offer group discounts?</h3>
+                      <p className="text-gray-600 text-sm">Yes, we offer special discounts for groups of 5 or more students.</p>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold mb-2">How do I get support?</h3>
+                      <p className="text-gray-600 text-sm">You can reach us via email, live chat, or phone. Premium users get priority support.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </main>
+
+            {/* Footer */}
+            <Footer />
+          </div>
+          <ChatBot />
+        </SidebarInset>
       </div>
-
-      <div className="container mx-auto px-4 py-12">
-        {/* Pricing Plans Section */}
-        <div className="mb-16">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Pricing Plans</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Choose the perfect plan that matches your learning goals and timeline
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {pricingPlans.map((plan) => {
-              const IconComponent = plan.icon
-              return (
-                <Card 
-                  key={plan.id} 
-                  className={`relative ${plan.popular ? 'ring-2 ring-orange-500 scale-105' : ''}`}
-                >
-                  {plan.popular && (
-                    <Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-orange-500 text-white">
-                      Most Popular
-                    </Badge>
-                  )}
-                  <CardHeader className="text-center">
-                    <div className="flex justify-center mb-4">
-                      <div className={`p-3 rounded-full ${plan.color} text-white`}>
-                        <IconComponent className="w-6 h-6" />
-                      </div>
-                    </div>
-                    <CardTitle className="text-2xl">{plan.name}</CardTitle>
-                    <CardDescription className="text-base">{plan.description}</CardDescription>
-                    <div className="mt-4">
-                      <div className="flex items-center justify-center gap-2">
-                        <span className="text-3xl font-bold text-gray-900">{plan.price}</span>
-                        <span className="text-lg text-gray-500 line-through">{plan.originalPrice}</span>
-                      </div>
-                      <p className="text-sm text-gray-600 mt-1">for {plan.duration}</p>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <ul className="space-y-3 mb-6">
-                      {plan.features.map((feature, index) => (
-                        <li key={index} className="flex items-center gap-3">
-                          <Check className="w-5 h-5 text-green-500 flex-shrink-0" />
-                          <span className="text-sm">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                    <Button 
-                      className={`w-full ${plan.popular ? 'bg-orange-500 hover:bg-orange-600' : 'bg-blue-500 hover:bg-blue-600'}`}
-                      onClick={() => handleBuyNow(plan.id, plan.name)}
-                    >
-                      Buy Now
-                    </Button>
-                  </CardContent>
-                </Card>
-              )
-            })}
-          </div>
-        </div>
-
-        {/* Templates Section */}
-        <div className="mb-16">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Study Templates</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Pre-designed learning paths for specific academic streams
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-            {templates.map((template, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <CardTitle className="text-lg">{template.name}</CardTitle>
-                  <CardDescription>{template.duration} program</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="mb-4">
-                    <h4 className="font-semibold text-sm mb-2">Subjects:</h4>
-                    <div className="flex flex-wrap gap-1">
-                      {template.subjects.map((subject, idx) => (
-                        <Badge key={idx} variant="secondary" className="text-xs">
-                          {subject}
-                        </Badge>
-                      ))}
-                    </div>
-                  </div>
-                  <div className="mb-4">
-                    <h4 className="font-semibold text-sm mb-2">Features:</h4>
-                    <ul className="text-xs text-gray-600 space-y-1">
-                      {template.features.map((feature, idx) => (
-                        <li key={idx} className="flex items-center gap-1">
-                          <Target className="w-3 h-3 text-orange-500" />
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-2xl font-bold text-orange-500">{template.price}</span>
-                    <Badge variant="outline" className="text-xs">
-                      <Clock className="w-3 h-3 mr-1" />
-                      {template.duration}
-                    </Badge>
-                  </div>
-                  <Button 
-                    className="w-full bg-orange-500 hover:bg-orange-600"
-                    onClick={() => handleTemplateBuy(template.name, template.price)}
-                  >
-                    Buy Now
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-
-        {/* FAQ Section */}
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Frequently Asked Questions</h2>
-          </div>
-          
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="space-y-6">
-              <div>
-                <h3 className="font-semibold mb-2">Can I upgrade my plan later?</h3>
-                <p className="text-gray-600 text-sm">Yes, you can upgrade your plan at any time. The remaining balance will be adjusted accordingly.</p>
-              </div>
-              <div>
-                <h3 className="font-semibold mb-2">What payment methods do you accept?</h3>
-                <p className="text-gray-600 text-sm">We accept all major credit cards, debit cards, UPI, and net banking.</p>
-              </div>
-              <div>
-                <h3 className="font-semibold mb-2">Is there a money-back guarantee?</h3>
-                <p className="text-gray-600 text-sm">Yes, we offer a 30-day money-back guarantee if you're not satisfied with our service.</p>
-              </div>
-            </div>
-            
-            <div className="space-y-6">
-              <div>
-                <h3 className="font-semibold mb-2">Can I access content offline?</h3>
-                <p className="text-gray-600 text-sm">Yes, you can download study materials for offline access through our mobile app.</p>
-              </div>
-              <div>
-                <h3 className="font-semibold mb-2">Do you offer group discounts?</h3>
-                <p className="text-gray-600 text-sm">Yes, we offer special discounts for groups of 5 or more students.</p>
-              </div>
-              <div>
-                <h3 className="font-semibold mb-2">How do I get support?</h3>
-                <p className="text-gray-600 text-sm">You can reach us via email, live chat, or phone. Premium users get priority support.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    </SidebarProvider>
   )
 } 
