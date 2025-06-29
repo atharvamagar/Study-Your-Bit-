@@ -101,9 +101,18 @@ export function Header({ isLoggedIn, onLoginToggle }: HeaderProps) {
             <a href="#exam-ai" className="hover:text-white text-sm text-center py-2 text-white transition-colors">
               Exam AI
             </a>
-            <a href="#program" className="hover:text-white text-sm text-center py-2 text-white transition-colors">
-              Program
-            </a>
+            
+            <DropdownMenu>
+              <DropdownMenuTrigger className="flex items-center space-x-1 hover:text-white text-sm text-center py-2 text-white transition-colors">
+                <span>Program</span>
+                <ChevronDown className="w-3 h-3" />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuItem className="text-center">
+                  <a href="/pricing" className="w-full text-center">Pricing Plans</a>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
 
             <DropdownMenu>
               <DropdownMenuTrigger className="flex items-center space-x-1 hover:text-white text-sm text-center py-2 text-white transition-colors">
@@ -239,9 +248,18 @@ export function Header({ isLoggedIn, onLoginToggle }: HeaderProps) {
                 <a href="#exam-ai" className="block text-white/90 hover:text-white transition-colors">
                   Exam AI
                 </a>
-                <a href="#program" className="block text-white/90 hover:text-white transition-colors">
-                  Program
-                </a>
+                
+                <div>
+                  <h3 className="font-semibold mb-2 text-white">Program</h3>
+                  <div className="pl-4 space-y-2">
+                    <a
+                      href="/pricing"
+                      className="block text-white/70 hover:text-white transition-colors"
+                    >
+                      Pricing Plans
+                    </a>
+                  </div>
+                </div>
                 
                 <div>
                   <h3 className="font-semibold mb-2 text-white">Resources</h3>

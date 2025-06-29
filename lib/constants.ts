@@ -28,7 +28,7 @@ export const NAVIGATION = {
   semesters: ["Sem 1", "Sem 2"],
   chapters: ["Chapter 1", "Chapter 2"],
   universities: ["Mumbai University", "Delhi University", "Kolkata University"],
-  blogCategories: ["Exam Prep", "Study Tips", "Theory Connect (current affairs & theories)"],
+  blogCategories: ["Exam Prep", "Study Tips", "Theory Connect"],
   grievancesCategories: ["Register a complaint"],
   profileOptions: [
     "My Account",
