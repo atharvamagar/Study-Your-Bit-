@@ -31,7 +31,7 @@ export function Header({ isLoggedIn, onLoginToggle }: HeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   return (
-    <header className="shadow-sm border-b bg-orange-500">
+    <header className="w-full z-30 shadow-sm" style={{ backgroundColor: '#FD7702' }}>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Desktop Navigation */}

@@ -91,9 +91,9 @@ export function AppSidebar() {
   return (
     <Sidebar
       collapsible="none"
-      className="border-r transition-all duration-300 ease-in-out bg-orange-500"
+      className="border-r transition-all duration-300 ease-in-out" style={{ backgroundColor: '#FD7702' }}
     >
-      <SidebarHeader className="p-6 transition-all duration-300 ease-in-out flex items-start justify-start bg-orange-500">
+      <SidebarHeader className="p-6 transition-all duration-300 ease-in-out flex items-start justify-start" style={{ backgroundColor: '#FD7702' }}>
         <div className="flex items-start justify-start space-x-3">
           <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
             <WebsiteIcon className="w-8 h-8" style={{ color: COLORS.primary.orange }} />
@@ -105,7 +105,7 @@ export function AppSidebar() {
         </div>
       </SidebarHeader>
 
-      <SidebarContent className="transition-all duration-300 ease-in-out bg-orange-500">
+      <SidebarContent className="transition-all duration-300 ease-in-out" style={{ backgroundColor: '#FD7702' }}>
         {/* Student Corner */}
         <SidebarGroup className="animate-slide-in-left" style={{ animationDelay: "0.1s" }}>
           <SidebarGroupLabel
@@ -167,9 +167,7 @@ export function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
 
-      <SidebarFooter
-        className="p-6 animate-slide-in-left bg-orange-500"
-      >
+      <SidebarFooter className="p-6 animate-slide-in-left" style={{ backgroundColor: '#FD7702' }}>
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton className="text-white hover:bg-orange-600 transition-all duration-300 hover:translate-x-2 hover:scale-105 group py-3">
