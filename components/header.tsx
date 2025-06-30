@@ -97,10 +97,6 @@ export function Header({ isLoggedIn, onLoginToggle }: HeaderProps) {
                 ))}
               </DropdownMenuContent>
             </DropdownMenu>
-
-            <a href="#exam-ai" className="hover:text-white text-sm text-center py-2 text-white transition-colors">
-              Exam AI
-            </a>
             
             <DropdownMenu>
               <DropdownMenuTrigger className="flex items-center space-x-1 hover:text-white text-sm text-center py-2 text-white transition-colors">
@@ -113,6 +109,10 @@ export function Header({ isLoggedIn, onLoginToggle }: HeaderProps) {
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
+
+            <a href="#exam-ai" className="hover:text-white text-sm text-center py-2 text-white transition-colors">
+              Exam AI
+            </a>
 
             <DropdownMenu>
               <DropdownMenuTrigger className="flex items-center space-x-1 hover:text-white text-sm text-center py-2 text-white transition-colors">
