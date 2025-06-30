@@ -91,6 +91,7 @@ export const SAMPLE_COURSES = [
     lastUpdated: "2024-01-15",
     language: "English",
     certificate: true,
+    status: "active" as const,
     instructor: {
       id: "prof-smith",
       name: "Dr. Samriddhi Sengupta",
@@ -168,6 +169,104 @@ export const SAMPLE_COURSES = [
           { id: "lesson-16", title: "Research Design", duration: "55 min", type: "video" as const },
           { id: "lesson-17", title: "Data Collection Methods", duration: "50 min", type: "video" as const },
           { id: "lesson-18", title: "Final Research Project", duration: "120 min", type: "assignment" as const }
+        ]
+      }
+    ],
+    demoVideo: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    demoThumbnail: "/placeholder.jpg"
+  },
+  {
+    id: "economics-fundamentals",
+    title: "Economics Fundamentals",
+    description: "Learn the basic principles of economics including supply and demand, market structures, and economic policy.",
+    thumbnail: "/placeholder.jpg",
+    tags: ["Economics", "Beginner", "University Level"],
+    duration: "10 weeks",
+    level: "Beginner" as const,
+    rating: 4.6,
+    reviewCount: 892,
+    price: 2499,
+    enrolledStudents: 12350,
+    lastUpdated: "2024-01-20",
+    language: "English",
+    certificate: true,
+    status: "draft" as const,
+    instructor: {
+      id: "prof-johnson",
+      name: "Dr. Rajesh Kumar",
+      role: "Professor",
+      bio: "Dr. Rajesh Kumar is a Professor of Economics with expertise in microeconomics and public policy.",
+      photo: "/placeholder-user.jpg",
+      rating: 4.7,
+      reviewCount: 456,
+      coursesCount: 5,
+      studentsCount: 18000,
+      expertise: ["Microeconomics", "Public Policy", "Economic Theory"]
+    },
+    learningOutcomes: [
+      "Understand basic economic principles",
+      "Analyze market structures",
+      "Evaluate economic policies",
+      "Apply economic concepts to real-world scenarios"
+    ],
+    syllabus: [
+      {
+        id: "module-1",
+        title: "Introduction to Economics",
+        description: "Basic economic concepts and principles",
+        duration: "2 weeks",
+        lessons: [
+          { id: "lesson-1", title: "What is Economics?", duration: "45 min", type: "video" as const },
+          { id: "lesson-2", title: "Scarcity and Choice", duration: "50 min", type: "video" as const }
+        ]
+      }
+    ],
+    demoVideo: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    demoThumbnail: "/placeholder.jpg"
+  },
+  {
+    id: "history-modern-world",
+    title: "Modern World History",
+    description: "Explore the major events and developments that shaped the modern world from the 18th century to present.",
+    thumbnail: "/placeholder.jpg",
+    tags: ["History", "Intermediate", "University Level"],
+    duration: "14 weeks",
+    level: "Intermediate" as const,
+    rating: 4.9,
+    reviewCount: 1567,
+    price: 3499,
+    enrolledStudents: 18920,
+    lastUpdated: "2023-12-10",
+    language: "English",
+    certificate: true,
+    status: "archived" as const,
+    instructor: {
+      id: "prof-williams",
+      name: "Dr. Priya Patel",
+      role: "Associate Professor",
+      bio: "Dr. Priya Patel specializes in modern European history and global studies.",
+      photo: "/placeholder-user.jpg",
+      rating: 4.8,
+      reviewCount: 723,
+      coursesCount: 6,
+      studentsCount: 22000,
+      expertise: ["Modern History", "European History", "Global Studies"]
+    },
+    learningOutcomes: [
+      "Understand major historical events",
+      "Analyze historical trends",
+      "Develop critical historical thinking",
+      "Connect past events to present circumstances"
+    ],
+    syllabus: [
+      {
+        id: "module-1",
+        title: "The Age of Revolutions",
+        description: "Industrial and political revolutions",
+        duration: "3 weeks",
+        lessons: [
+          { id: "lesson-1", title: "Industrial Revolution", duration: "60 min", type: "video" as const },
+          { id: "lesson-2", title: "French Revolution", duration: "55 min", type: "video" as const }
         ]
       }
     ],

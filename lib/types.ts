@@ -65,6 +65,7 @@ export interface Course {
   lastUpdated: string
   language: string
   certificate: boolean
+  status?: 'active' | 'draft' | 'archived' | 'published'
 }
 
 export interface Instructor {
