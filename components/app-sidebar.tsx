@@ -99,8 +99,8 @@ export function AppSidebar() {
             <WebsiteIcon className="w-8 h-8" style={{ color: COLORS.primary.orange }} />
           </div>
           <div className="text-start">
-            <h3 className="text-lg font-bold leading-none text-white">Study Your Bit</h3>
-            <p className="text-xs text-white/80 leading-none mt-1">Learn Smart, Learn Fast</p>
+            <h2 className="text-lg font-bold leading-none text-white">Study Your Bit</h2>
+            <p className="text-sm font-semibold text-white whitespace-nowrap tracking-wide" style={{textShadow: '0 1px 4px rgba(0,0,0,0.15)'}}>Learn Smart, Learn Fast</p>
           </div>
         </div>
       </SidebarHeader>
