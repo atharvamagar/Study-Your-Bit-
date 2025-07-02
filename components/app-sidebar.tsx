@@ -94,9 +94,9 @@ export function AppSidebar() {
       className="border-r transition-all duration-300 ease-in-out" style={{ backgroundColor: '#FD7702' }}
     >
       <SidebarHeader className="p-6 transition-all duration-300 ease-in-out flex items-start justify-start" style={{ backgroundColor: '#FD7702' }}>
-        <div className="flex items-start justify-start space-x-3">
+        <div className="flex items-start justify-start space-x-2">
           <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
-            <WebsiteIcon className="w-8 h-8" style={{ color: COLORS.primary.orange }} />
+            <WebsiteIcon className="w-12 h-12" style={{ color: COLORS.primary.orange }} />
           </div>
           <div className="text-start">
             <h2 className="text-lg font-bold leading-none text-white">Study Your Bit</h2>
